@@ -1,5 +1,6 @@
 'use client';
 
+import AuthModal from '@/components/AuthModal';
 import React from 'react';
 
 const ModalProvider = () => {
@@ -10,7 +11,11 @@ const ModalProvider = () => {
   }, []);
   if (!isMounted) return null;
 
-  return <dialog>ModelProvider</dialog>;
+  return (
+    <>
+      <AuthModal />
+    </>
+  );
 };
 
 export default ModalProvider;

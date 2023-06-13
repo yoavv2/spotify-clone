@@ -11,6 +11,7 @@ import useAuthModal from '@/hooks/useAuthModal';
 import Button from './Button';
 import { useUser } from '@/hooks/useUser';
 import { FaUserAlt } from 'react-icons/fa';
+import { toast } from 'react-hot-toast';
 interface HeaderProps {
   children: React.ReactNode;
   className?: string;
@@ -26,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
     // TODO: reset any playing songs
     router.refresh();
     if (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
   return (
@@ -62,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         <div className='flex items-center justify-between gap-x-4'>
           {user ? (
             <div className='flex items-center gap-x-4'>
-              <Button onClick={handleLogout} className='px-6 py-2 bg-white'>
+              <Button onClick={handleLogout} className='px-6 py-2 bg-white '>
                 Logout
               </Button>
               <Button onClick={() => router.push('/account')}>

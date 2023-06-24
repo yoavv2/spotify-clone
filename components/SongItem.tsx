@@ -13,7 +13,7 @@ interface SongItemProps {
 
 const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
   const imagePath = useLoadImage(data);
-  const handleOnClick = () => onClick;
+  const handleOnClick = () => onClick(data.id);
 
   return (
     <div
@@ -29,7 +29,12 @@ const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
         />
       </div>
       <div className='flex flex-col items-start w-full p-4 gap-y-1'>
-        <p className='w-full font-semibold truncate'>{data.title}</p>
+        <p
+          className='w-full font-semibold truncate max-w-[200px]
+        '
+        >
+          {data.title}
+        </p>
         <p className='w-full pb-4 text-sm truncate text-neutral-400'>
           By {data.author}
         </p>
